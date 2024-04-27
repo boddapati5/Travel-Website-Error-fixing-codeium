@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Travel Website</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Travel Website</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Bookings</a></li>
+      <li><a href="#">Profile</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Welcome to our travel website!</h2>
+      <p>Explore our collection of amazing destinations and book your dream trip today.</p>
+    </section>
+
+    <section id="destinations">
+      <h2>Popular Destinations</h2>
+      <ul id="destination-list">
+        <!-- Populate destinations dynamically using JavaScript -->
+      </ul>
+    </section>
+
+    <section id="bookings">
+      <h2>Your Bookings</h2>
+      <ul id="booking-list">
+        <!-- Populate bookings dynamically using JavaScript -->
+      </ul>
+    </section>
+
+    <section id="profile">
+      <h2>Profile</h2>
+      <form id="profile-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br><br>
+        <button type="submit">Update Profile</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2022 Travel Website. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript code
+
+    // Fetch destinations from the server and populate the destination list
+    fetch('/destinations')
+      .then(response => response.json())
+      .then(destinations => {
+        const destinationList = document.getElementById('destination-list');
+        destinations.forEach(destination => {
+          const listItem = document.createElement('li');
+          listItem.textContent = destination.name;
+          destinationList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching destinations:', error);
+      });
+
+    // Fetch bookings from the server and populate the booking list
+    fetch('/bookings')
+      .then(response => response.json())
+      .then(bookings => {
+        const bookingList = document.getElementById('book
